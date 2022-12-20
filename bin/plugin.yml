@@ -1,0 +1,43 @@
+name: RoseCpsLimiter
+main: me.Katerose.RoseCpsLimiter.RoseCpsLimiter
+version: 1.9.4
+description: Cps limit plugin!
+author: Katerose
+softdepend: [PlaceholderAPI]
+website: https://www.spigotmc.org/resources/%E2%9C%A8-rose-cps-limiter-1-8-x-1-19-x-%E2%9C%A8-anti-macro-kick-players-fully-customizable-freeze.90725/
+ 
+commands:
+  rosecpslimiter:
+    useage: /<command>
+    aliases: [rosecpslimiter_rosecpslimiter, rcl]
+    description: Main commands.
+    
+permissions:
+  rosecpslimiter.use.reload:
+    description: Allows reload command
+    default: op
+  rosecpslimiter.use.version:
+    description: Allows version command
+    default: op
+  rosecpslimiter.use.bypass:
+    description: Using the Bypass feature
+    default: op
+  rosecpslimiter.use.help:
+    description: Allows help command
+    default: op
+  rosecpslimiter.use.toggle:
+    description: Allows toggle command
+    default: op
+  rosecpslimiter.use.permissions:
+    description: Allows permissions command
+    default: op
+  rosecpslimiter.use.*:
+    description: Allows all permission
+    default: op
+    children:
+      rosecpslimiter.use.reload: true
+      rosecpslimiter.use.version: true
+      rosecpslimiter.use.bypass: true
+      rosecpslimiter.use.help: true
+      rosecpslimiter.use.toggle: true
+      rosecpslimiter.use.permissions: true

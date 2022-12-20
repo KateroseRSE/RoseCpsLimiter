@@ -1,0 +1,142 @@
+#
+# COLORAPI: Errors can occur in use cases below Minecraft version 1.16.
+#
+# {!} Using it on very old versions can cause problems!
+#
+# Examples; 
+# - <GRADIENT:ff1b6b>your-text-here</GRADIENT:45caff>
+# - <RAINBOW1>your-text-here</RAINBOW>
+# - <RAINBOW100>your-text-here</RAINBOW>
+# - <SOLID:FF0080>your-text-here
+#
+# {?} You can click this link for more help: https://www.spigotmc.org/resources/iridiumcolorapi.87351/
+#
+# COLOR API ONLY WORK [1.16+] VERSIONS
+#
+# If you want to support:
+# > Patreon: https://www.patreon.com/KateroseRSE_?fan_landing=true
+#
+
+# ^ Please do not edit. ^
+version: 1.9.4
+
+Protect:
+  Left-Click:
+    On-Freeze:
+      #
+      # -- FREEZE TYPES --
+      # <?> You can use the following types for restrict features. 
+      #  Using these features will restrict the player.
+      #
+      # Types:
+      # - DISABLE_BLOCK_BREAK
+      # - DISABLE_BLOCK_PLACE
+      # - DISABLE_ATTACK
+      # - DISABLE_ITEM_CONSUME
+      # - DISABLE_FLY
+      # - DISABLE_JUMP
+      # - RESET_FOODBAR
+      # - DISABLE_TELEPORT
+      # - DISABLE_USE_COMMANDS
+      #
+      # <?> You can make the plugin more customizable and functional
+      #  by entering some actions that you want to be banned when the player freezes.
+      #
+      Types: 
+      - DISABLE_ATTACK
+      
+      #
+      # -- ADMIN BYPASS --
+      # <?> This feature is useful if you want authorized or admin players to be unaffected by this plugin.
+      #
+      AdminBypass: true
+      
+      #
+      # <?> If you write "[op]" or "[player]" at the beginning of the commands you want to execute, 
+      #  you can set the authorization with which they will be executed.
+      #
+      # <?> If you do not add any prefix to the command, it will be executed through the console.
+      #
+      # <?> Examples;
+      #   Run-Command:
+      #   - '[PLAYER]your command here' <?> Executes the command based on the authorizations carried by the player.
+      #   - '[OP]your command here' <?> Ignores the player's authorizations, but instead executes the command as if it were executed by an official.
+      #   - 'your command here' <?>
+      #
+      # <?> What is the Exceeding-Limit?
+      #  "Exceeding-Limit" allows you to add your new cps limit and stop 
+      #  players with different restrictions if they exceed the set limit excessively.
+      #
+      Run-Command:
+      - '[OP]broadcast %player%'
+      
+      Exceeding-Limit:
+        20:
+          Run-Command:
+          - 'your command here'
+        30:
+          Run-Command:
+          - 'your command here'
+        40:
+          Run-Command:
+          - 'your command here'
+          
+      # 
+      # -- SENDER --
+      # <?> This is where you can set the messages you want to send to the player when the over limit occurs.
+      #
+      Sender:
+        ActionBar: 
+          enable: true
+          actionbar: '&8- &cYour cps is high. You can not attack. &8-'
+        Chat:
+          enable: true
+          chat: '&cYour cps is high. You can not attack for {sec} seconds.'
+        Title:
+          enable: true
+          title: '&4&l✖'
+          subtitle: '&c&lYour cps is high.'
+          shake: true
+      #
+      # -- KICK --
+      # <?> Do you want to kick a player off the server when they go over their limit? 
+      #  Then this feature will be very useful for you.
+      #
+      Kick:
+        enable: false
+        message: '&4Your cps is high.<nextline>&cYour Cps&8/&cLimit: &e{cps}&8/&e{limit}'
+
+#
+#
+# <?> You can edit the general settings and the main messages of the plugin from this section. It is fully customizable.
+#
+# <?> Limit: Allows you to edit the overall cps limit on the server.
+# <?> Freeze-Second: Allows you to set the time a player is restricted if they exceed the set cps limit on the server.
+# <?> Messages.Types: Send a message to the player if they try to fulfill the features you have restricted.
+# <?> Messages.Progress: It would be different to show a customized progress bar instead of text when the player sees the cps limit.
+# <?> Messages.Main: Other admin messages of the plugin.
+#
+Settings:
+  Prefix: '&8[<GRADIENT:ff1b6b>RoseCpsLimiter</GRADIENT:45caff>&8] &r'
+  # cps limit
+  Limit: 10
+  Freeze-Second: 5
+Messages:
+  Types:
+    disable-use-commands: '<GRADIENT:E60C0C>Your cps is high. You do not use this command.</GRADIENT:714C17>'
+    disable-teleport: '<GRADIENT:E60C0C>Your cps is high. You do not teleport.</GRADIENT:714C17>'
+    disable-block-break: '<GRADIENT:E60C0C>Your cps is high. You do not break this block.</GRADIENT:714C17>'
+    disable-block-place: '<GRADIENT:E60C0C>Your cps is high. You do not place this block.</GRADIENT:714C17>'
+    disable-item-consume: '<GRADIENT:E60C0C>Your cps is high. You cannot consume items.</GRADIENT:714C17>'
+  Toggle:
+    enabled: '&aCps enabled.'
+    disabled: '&cCps disabled.'
+    actionbar: '&cYour cps &e{cps}. &8- &cLast cps &e{lastcps}.'
+    Progress:
+      # Actionbar is disabled if progress is enabled!
+      enable: false
+      char: '█'
+  Main:
+    reload: '<GRADIENT:25B1B1>Config.yml has been reloaded.</GRADIENT:8331AC>'
+    permission: '<GRADIENT:E60C0C>You do not have permission to this command.</GRADIENT:714C17>'
+    unknown-command: '<GRADIENT:E60C0C>Unknown command.</GRADIENT:12005A>'
